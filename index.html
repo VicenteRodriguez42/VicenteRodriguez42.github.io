@@ -3,81 +3,181 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Calculadora educativa de dosis de insulina (Demo)</title>
+  <title>Centro Médico – Calculadora Educativa de Insulina</title>
+
   <style>
-    body{font-family:Inter,system-ui,Segoe UI,Arial;max-width:880px;margin:28px auto;padding:20px;color:#0f172a}
-    h1{font-size:1.6rem;margin-bottom:6px}
-    .card{padding:18px;border-radius:10px;border:1px solid #e6edf3;box-shadow:0 6px 18px rgba(14,30,37,.04)}
-    label{display:block;margin-top:12px;font-weight:600}
-    input[type=number], input[type=text], select{width:100%;padding:10px;border-radius:6px;border:1px solid #d7e2ea;margin-top:6px}
-    button{margin-top:14px;padding:10px 14px;border-radius:8px;border:0;background:#0ea5a8;color:white;font-weight:700;cursor:pointer}
-    .result{margin-top:14px;padding:12px;background:#f8fafc;border-left:4px solid #60a5fa}
-    .disclaimer{background:#fff4f4;color:#7f1d1d;padding:12px;border-radius:8px;margin-bottom:12px;border:1px solid #ffd6d6}
-    small{color:#475569}
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(120deg, #e0f2fe, #f8fafc);
+      margin: 0;
+      padding: 0;
+      color: #0f172a;
+    }
+
+    header {
+      background: #0f766e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    header p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .disclaimer {
+      background: #fff1f2;
+      border-left: 5px solid #be123c;
+      padding: 14px;
+      border-radius: 8px;
+      color: #7f1d1d;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: 600;
+      color: #0f766e;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0f766e;
+      box-shadow: 0 0 0 2px rgba(15,118,110,0.2);
+    }
+
+    button {
+      margin-top: 24px;
+      background: #0f766e;
+      color: white;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #115e59;
+    }
+
+    .result {
+      margin-top: 24px;
+      background: #e0f2fe;
+      border-left: 5px solid #0284c7;
+      padding: 16px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.85rem;
+      color: #475569;
+    }
   </style>
 </head>
+
 <body>
-  <h1>Calculadora educativa de dosis de insulina (Demo)</h1>
+
+<header>
+  <h1>Centro Médico Virtual</h1>
+  <p>Calculadora educativa de dosis de insulina</p>
+</header>
+
+<main>
   <div class="card">
+
     <div class="disclaimer">
-      <strong>AVISO — USO EDUCATIVO:</strong> Esta calculadora es un ejemplo informático y no debe usarse para tratamiento real. Consulta siempre a un profesional de la salud para cálculo y ajuste de insulina.
+      <strong>Uso educativo:</strong> Esta herramienta es una simulación académica y no debe utilizarse para decisiones médicas reales.
     </div>
 
-    <label>Glicemia actual (mg/dL)</label>
-    <input id="bg" type="number" placeholder="Ej. 180" value="150" />
+    <label>Glucemia actual (mg/dL)</label>
+    <input id="bg" type="number" value="150">
 
-    <label>Glicemia objetivo (mg/dL)</label>
-    <input id="target" type="number" placeholder="Ej. 120" value="120" />
+    <label>Glucemia objetivo (mg/dL)</label>
+    <input id="target" type="number" value="120">
 
-    <label>Sensibilidad a la insulina (mg/dL por unidad) — SI</label>
-    <input id="si" type="number" placeholder="Ej. 50 (mg/dL por UI)" value="50" />
+    <label>Sensibilidad a la insulina (mg/dL por unidad)</label>
+    <input id="si" type="number" value="50">
 
-    <label>Carbohidratos de la comida (g)</label>
-    <input id="carbs" type="number" placeholder="Ej. 60" value="0" />
+    <label>Carbohidratos ingeridos (g)</label>
+    <input id="carbs" type="number" value="0">
 
-    <label>Ratio carbohidratos/insulina (g por UI)</label>
-    <input id="carbRatio" type="number" placeholder="Ej. 10 (g/UI)" value="10" />
+    <label>Ratio carbohidrato / insulina (g por unidad)</label>
+    <input id="carbRatio" type="number" value="10">
 
-    <label>Duración acción insulina (horas) — (para información)</label>
-    <input id="tau" type="number" placeholder="Ej. 4" value="4" />
-
-    <button id="calc">Calcular dosis (demo)</button>
+    <button id="calc">Calcular dosis educativa</button>
 
     <div id="out" class="result" style="display:none"></div>
 
-    <p style="margin-top:10px"><small>Fórmula demostrativa (simplificada):</small></p>
-    <pre style="background:#f1f5f9;padding:8px;border-radius:6px">dosis = max(0, (G_actual - G_objetivo)/SI + carbs / carbRatio)</pre>
-    <p><small>Esta fórmula **no** reemplaza una evaluación clínica. Está pensada para ilustrar cómo transformar datos en una fórmula matemática simple.</small></p>
   </div>
+</main>
 
-  <script>
-    document.getElementById('calc').addEventListener('click', function(){
-      const bg = Number(document.getElementById('bg').value || 0);
-      const target = Number(document.getElementById('target').value || 0);
-      const si = Number(document.getElementById('si').value || 1);
-      const carbs = Number(document.getElementById('carbs').value || 0);
-      const carbRatio = Number(document.getElementById('carbRatio').value || 1);
-      const tau = Number(document.getElementById('tau').value || 4);
+<footer>
+  Proyecto académico – Ingeniería en Sistemas | GitHub Pages
+</footer>
 
-      // Fórmula simplificada (educativa):
-      const correction = (bg - target) / si;     // unidades de insulina para corregir glucemia
-      const meal = carbs / carbRatio;             // unidades para cubrir carbohidratos
-      let dose = correction + meal;
-      if (isNaN(dose)) dose = 0;
-      dose = Math.max(0, Math.round(dose*10)/10); // redondeo 1 decimal
+<script>
+  document.getElementById("calc").addEventListener("click", function () {
 
-      const out = document.getElementById('out');
-      out.style.display = 'block';
-      out.innerHTML = `
-        <strong>Dosis educativa sugerida:</strong> <span style="font-size:1.4rem">${dose} UI</span>
-        <div style="margin-top:8px">
-          <small>Desglose: corrección = ${correction.toFixed(2)} UI, cobertura comida = ${meal.toFixed(2)} UI, acción aprox. ${tau} h</small>
-        </div>
-      `;
+    const bg = Number(document.getElementById("bg").value);
+    const target = Number(document.getElementById("target").value);
+    const si = Number(document.getElementById("si").value);
+    const carbs = Number(document.getElementById("carbs").value);
+    const carbRatio = Number(document.getElementById("carbRatio").value);
 
-      // NOTA importante dentro de la UI
-      out.innerHTML += `<div style="margin-top:10px;padding:8px;border-radius:6px;background:#fffef6;border:1px solid #f0e68c"><small><strong>Nota:</strong> este cálculo es una **demostración**. No lo uses para tratamiento real.</small></div>`;
-    });
-  </script>
+    const correction = (bg - target) / si;
+    const meal = carbs / carbRatio;
+    let dose = correction + meal;
+
+    dose = Math.max(0, Math.round(dose * 10) / 10);
+
+    const out = document.getElementById("out");
+    out.style.display = "block";
+    out.innerHTML = `
+      <strong>Dosis educativa estimada:</strong>
+      <h2>${dose} UI</h2>
+      <p>
+        Corrección: ${correction.toFixed(2)} UI<br>
+        Cobertura por comida: ${meal.toFixed(2)} UI
+      </p>
+    `;
+  });
+</script>
+
 </body>
 </html>
